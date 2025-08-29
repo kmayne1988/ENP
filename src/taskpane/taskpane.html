@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Excel Sheet Navigator</title>
+
+  <!-- Office JavaScript API -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+  <!-- Fluent UI -->
+  <link rel="stylesheet"
+        href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+
+  <!-- Custom styles -->
+  <link href="taskpane.css" rel="stylesheet" type="text/css" />
+  <script src="taskpane.js" defer></script>
+</head>
+
+<body class="ms-Fabric">
+  <main>
+    <!-- Filters -->
+    <div id="filter-bar">
+  <label>
+    <input type="checkbox" id="show-hidden" onchange="listSheets()" />
+    Show hidden
+  </label>
+  <label>
+    <input type="checkbox" id="only-hidden" onchange="listSheets()" />
+    Only hidden
+  </label>
+  <label style="margin-left:8 px;">
+    <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()" />
+    Dark mode
+  </label>
+</div>
+
+
+    <!-- Search -->
+    <input type="text" id="sheet-search" placeholder="Search sheets..."
+           onkeyup="filterSheets()" />
+
+    <!-- Sheet list -->
+    <div id="sheet-list"></div>
+
+    <!-- Context menu -->
+    <ul id="context-menu">
+      <li onclick="contextAction('activate')">Activate</li>
+      <li onclick="contextAction('hide')">Hide</li>
+      <li onclick="contextAction('unhide')">Unhide</li>
+      <li onclick="contextAction('pin')">Pin/Unpin</li>
+    </ul>
+  </main>
+</body>
+</html>

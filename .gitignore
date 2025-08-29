@@ -1,0 +1,13 @@
+# Ignore dependencies
+node_modules/
+
+# Ignore build output
+dist/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.cache
+
+# Ignore Office add-in debug files
+*.debug.xml
