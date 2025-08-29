@@ -3,10 +3,10 @@ name: Deploy ENP to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main   # whenever you push to main, redeploy
 
 permissions:
-  contents: write   # ✅ allow GitHub Actions bot to push
+  contents: write   # allow GitHub Actions bot to push
 
 jobs:
   build:
@@ -31,6 +31,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./dist
-          destination_dir: .   # ✅ puts files at root so URL is clean
+          publish_branch: gh-pages       # branch where Pages is served
+          publish_dir: ./dist            # ✅ publish build output
+          destination_dir: .             # ✅ flatten so /taskpane.html is at root
