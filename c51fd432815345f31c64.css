@@ -1,0 +1,147 @@
+body {
+  margin: 8px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Filter bar */
+#filter-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Search box */
+#sheet-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+/* Sheet list */
+#sheet-list {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section headers */
+#sheet-list .section-header {
+  font-weight: bold;
+  margin: 6px 0 4px;
+  font-size: 12px;
+  color: #444;
+}
+
+/* Buttons */
+.sheet-btn {
+  display: block;
+  width: 100%;
+  margin: 1px 0;
+  padding: 4px 6px;
+  text-align: left;
+  border: none;
+  border-radius: 3px;
+  background: #f3f3f3;
+  color: #333;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sheet-btn:hover {
+  background: #e1e1e1;
+}
+
+.sheet-btn.active {
+  background: #0078d4;
+  color: white;
+}
+
+.sheet-btn.pinned::before {
+  content: "📌 ";
+}
+
+.sheet-btn.hidden {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* Context menu */
+#context-menu {
+  position: absolute;
+  display: none;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  list-style: none;
+  z-index: 9999;
+  font-size: 12px;
+  min-width: 120px;
+}
+
+#context-menu li {
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#context-menu li:hover {
+  background-color: #0078d4;
+  color: white;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+body.dark-mode #sheet-search {
+  background: #2d2d2d;
+  border-color: #444;
+  color: #eee;
+}
+
+body.dark-mode .sheet-btn {
+  background: #2d2d2d;
+  color: #eee;
+}
+
+body.dark-mode .sheet-btn:hover {
+  background: #3a3a3a;
+}
+
+body.dark-mode .sheet-btn.active {
+  background: #0078d4;
+  color: white;
+}
+
+body.dark-mode #sheet-list {
+  border-color: #444;
+}
+
+body.dark-mode #context-menu {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+body.dark-mode #context-menu li:hover {
+  background-color: #0078d4;
+  color: white;
+}
