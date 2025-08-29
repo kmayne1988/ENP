@@ -26,7 +26,7 @@
 
   <!-- Default taskpane -->
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://kmayne1988.github.io/ENP/dist/taskpane.html"/>
+    <SourceLocation DefaultValue="https://kmayne1988.github.io/ENP/src/taskpane/taskpane.html"/>
   </DefaultSettings>
 
   <!-- Version overrides (Office 2016+) -->
@@ -77,7 +77,7 @@
         <bt:Image id="TaskpaneButton.Icon" DefaultValue="https://kmayne1988.github.io/ENP/dist/assets/icon-32.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://kmayne1988.github.io/ENP/dist/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://kmayne1988.github.io/ENP/src/taskpane/taskpane.html"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://kmayne1988.github.io/ENP/"/>
       </bt:Urls>
       <bt:ShortStrings>
