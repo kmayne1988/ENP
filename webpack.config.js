@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://kmayne1988.github.io/ENP/"; // ✅ use GitHub Pages root
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
@@ -18,11 +18,12 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
+      taskpane: "./src/taskpane/taskpane.js", // ✅ only JS here
       commands: "./src/commands/commands.js",
     },
     output: {
       clean: true,
+      filename: "[name].js", // ✅ puts taskpane.js in dist/, not a subfolder
     },
     resolve: {
       extensions: [".html", ".js"],
@@ -51,10 +52,17 @@ module.exports = async (env, options) => {
       ],
     },
     plugins: [
+      // ✅ Taskpane HTML will output at dist/taskpane.html
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
         chunks: ["polyfill", "taskpane"],
+      }),
+      // ✅ Commands HTML at dist/commands.html
+      new HtmlWebpackPlugin({
+        filename: "commands.html",
+        template: "./src/commands/commands.html",
+        chunks: ["polyfill", "commands"],
       }),
       new CopyWebpackPlugin({
         patterns: [
@@ -64,7 +72,7 @@ module.exports = async (env, options) => {
           },
           {
             from: "manifest*.xml",
-            to: "[name]" + "[ext]",
+            to: "[name][ext]",
             transform(content) {
               if (dev) {
                 return content;
@@ -74,11 +82,6 @@ module.exports = async (env, options) => {
             },
           },
         ],
-      }),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"],
       }),
     ],
     devServer: {
