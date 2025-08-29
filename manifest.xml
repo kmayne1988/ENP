@@ -1,25 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <Id>7a96cc53-62b7-4664-8a54-efb0c72f729e</Id>
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+
+  <!-- Basic metadata -->
+  <Id>5c8c1c90-9d76-4a8d-9a88-ENP123456789</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>ENP Add-in</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="ExcelNavPane"/>
-  <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="https://www.contoso.com/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://www.contoso.com/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
-  <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
-  </AppDomains>
+  <DisplayName DefaultValue="Excel Nav Pane (ENP)"/>
+  <Description DefaultValue="Quickly switch, pin, and manage sheets in Excel with a modern task pane navigator."/>
+
+  <!-- Icon (hosted on GitHub Pages too) -->
+  <IconUrl DefaultValue="https://kmayne1988.github.io/ENP/dist/assets/icon-32.png"/>
+
+  <!-- Support URL -->
+  <SupportUrl DefaultValue="https://kmayne1988.github.io/ENP/"/>
+
+  <!-- Hosts (Excel only) -->
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
+
+  <!-- Default taskpane -->
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://www.contoso.com/taskpane.html"/>
+    <SourceLocation DefaultValue="https://kmayne1988.github.io/ENP/dist/taskpane.html"/>
   </DefaultSettings>
-  <Permissions>ReadWriteDocument</Permissions>
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+  <!-- Version overrides (Office 2016+) -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" Version="1.0">
     <Hosts>
       <Host xsi:type="Workbook">
         <DesktopFormFactor>
@@ -28,16 +39,10 @@
             <Description resid="GetStarted.Description"/>
             <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
           </GetStarted>
-          <FunctionFile resid="Commands.Url"/>
+
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
-              <Group id="CommandsGroup">
-                <Label resid="CommandsGroup.Label"/>
-                <Icon>
-                  <bt:Image size="16" resid="Icon.16x16"/>
-                  <bt:Image size="32" resid="Icon.32x32"/>
-                  <bt:Image size="80" resid="Icon.80x80"/>
-                </Icon>
+              <Group id="ENPGroup" label="Sheet Navigator">
                 <Control xsi:type="Button" id="TaskpaneButton">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
@@ -45,40 +50,43 @@
                     <Description resid="TaskpaneButton.Tooltip"/>
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
+                    <bt:Image size="16" resid="TaskpaneButton.Icon"/>
+                    <bt:Image size="32" resid="TaskpaneButton.Icon"/>
+                    <bt:Image size="80" resid="TaskpaneButton.Icon"/>
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>ButtonId1</TaskpaneId>
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
               </Group>
             </OfficeTab>
           </ExtensionPoint>
+
+          <AllFormFactors>
+            <ExtensionPoint xsi:type="Taskpane">
+              <SourceLocation resid="Taskpane.Url"/>
+            </ExtensionPoint>
+          </AllFormFactors>
         </DesktopFormFactor>
       </Host>
     </Hosts>
+
+    <!-- Localized strings -->
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://www.contoso.com/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://www.contoso.com/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://www.contoso.com/assets/icon-80.png"/>
+        <bt:Image id="TaskpaneButton.Icon" DefaultValue="https://kmayne1988.github.io/ENP/dist/assets/icon-32.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://www.contoso.com/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://www.contoso.com/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://kmayne1988.github.io/ENP/dist/taskpane.html"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://kmayne1988.github.io/ENP/"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Navigator"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Excel Nav Pane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the Excel Nav Pane taskpane"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Quickly switch, pin, and manage sheets in Excel with ENP."/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
