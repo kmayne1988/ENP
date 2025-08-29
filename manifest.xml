@@ -5,41 +5,28 @@
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
 
-  <!-- Basic metadata -->
-  <Id>5c8c1c90-9d76-4a8d-9a88-ENP123456789</Id>
+  <Id>6f53d80e-9e13-4a6c-9b0c-e1b4c6c1d5f1</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>ENP Add-in</ProviderName>
+  <ProviderName>ENP</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Excel Nav Pane (ENP)"/>
-  <Description DefaultValue="Quickly switch, pin, and manage sheets in Excel with a modern task pane navigator."/>
+  <DisplayName DefaultValue="Excel Nav Pane"/>
+  <Description DefaultValue="Quickly switch, pin, and manage sheets in Excel."/>
 
-  <!-- Icon (hosted on GitHub Pages too) -->
-  <IconUrl DefaultValue="https://kmayne1988.github.io/ENP/dist/assets/icon-32.png"/>
-
-  <!-- Support URL -->
+  <IconUrl DefaultValue="https://kmayne1988.github.io/ENP/assets/icon-32.png"/>
   <SupportUrl DefaultValue="https://kmayne1988.github.io/ENP/"/>
 
-  <!-- Hosts (Excel only) -->
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
 
-  <!-- Default taskpane -->
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://kmayne1988.github.io/ENP/src/taskpane/taskpane.html"/>
+    <SourceLocation DefaultValue="https://kmayne1988.github.io/ENP/taskpane.html"/>
   </DefaultSettings>
 
-  <!-- Version overrides (Office 2016+) -->
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" Version="1.0">
     <Hosts>
       <Host xsi:type="Workbook">
         <DesktopFormFactor>
-          <GetStarted>
-            <Title resid="GetStarted.Title"/>
-            <Description resid="GetStarted.Description"/>
-            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
-          </GetStarted>
-
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
               <Group id="ENPGroup" label="Sheet Navigator">
@@ -61,32 +48,22 @@
               </Group>
             </OfficeTab>
           </ExtensionPoint>
-
-          <AllFormFactors>
-            <ExtensionPoint xsi:type="Taskpane">
-              <SourceLocation resid="Taskpane.Url"/>
-            </ExtensionPoint>
-          </AllFormFactors>
         </DesktopFormFactor>
       </Host>
     </Hosts>
 
-    <!-- Localized strings -->
     <Resources>
       <bt:Images>
-        <bt:Image id="TaskpaneButton.Icon" DefaultValue="https://kmayne1988.github.io/ENP/dist/assets/icon-32.png"/>
+        <bt:Image id="TaskpaneButton.Icon" DefaultValue="https://kmayne1988.github.io/ENP/assets/icon-32.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://kmayne1988.github.io/ENP/src/taskpane/taskpane.html"/>
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://kmayne1988.github.io/ENP/"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://kmayne1988.github.io/ENP/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Navigator"/>
-        <bt:String id="GetStarted.Title" DefaultValue="Excel Nav Pane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the Excel Nav Pane taskpane"/>
-        <bt:String id="GetStarted.Description" DefaultValue="Quickly switch, pin, and manage sheets in Excel with ENP."/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
