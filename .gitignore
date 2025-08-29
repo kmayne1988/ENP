@@ -1,13 +1,27 @@
-# Ignore dependencies
+# Dependencies
 node_modules/
 
-# Ignore build output
+# Build output
 dist/
+build/
 
-# Ignore logs and temp files
+# Logs and temporary files
 *.log
 *.tmp
 *.cache
 
-# Ignore Office add-in debug files
+# Office add-in debug files
 *.debug.xml
+*.suo
+*.user
+*.vspscc
+*.vssscc
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE/project settings
+.vscode/
+.idea/
+*.swp
