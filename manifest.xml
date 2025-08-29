@@ -5,7 +5,7 @@
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
 
-  <Id>6f53d80e-9e13-4a6c-9b0c-e1b4c6c1d5f1</Id>
+  <Id>7ca9d8ad-3ba3-4ebe-828f-326260d2e2cb/Id>
   <Version>1.0.0.0</Version>
   <ProviderName>ENP</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
